@@ -7,53 +7,42 @@ import java.sql.Statement;
 
 public class Main {
 
-    // JDBC driver name and database URL
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/";
-
-    //  Database credentials
-    static final String USER = "username";
-    static final String PASS = "password";
-
     public static void main(String[] args) {
-        Connection conn = null;
-        Statement stmt = null;
+        Connection connection = null;
         try {
-            //STEP 2: Register JDBC driver
-            Class.forName("com.mysql.jdbc.Driver");
-
-            //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
-            //STEP 4: Execute a query
-            System.out.println("Creating database...");
-            stmt = conn.createStatement();
-
-            String sql = "CREATE DATABASE baza";
-            stmt.executeUpdate(sql);
-            System.out.println("Database created successfully...");
-        } catch (SQLException se) {
-            //Handle errors for JDBC
-            se.printStackTrace();
-        } catch (Exception e) {
-            //Handle errors for Class.forName
+            connection = DriverManager.getConnection("jdbc:sqlite:baza.db");
+            System.out.println("Radi driver");
+        } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            //finally block used to close resources
-            try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException se2) {
-            }// nothing we can do
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }//end finally try
-        }//end try
-        System.out.println("Goodbye!");
+        }
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+            System.out.println("Uspostavljena veza");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            statement.execute("CREATE TABLE drzava(id INT PRIMARY KEY ,naziv VARCHAR not null )");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            statement.execute("CREATE TABLE grad(id int primary key, naziv varchar, broj_stanovnika int, drzava int references drzava(id));");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            statement.execute("ALTER TABLE drzava add column glavni_grad int references drzava(id);");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Sve OK");
+//        statement.execute("DROP TABLE main.drzava;");
+//        statement.execute("DROP TABLE main.grad;");
+//          statement.execute("alter table drzava drop column glavni_grad");
+//          statement.execute("alter table drzava add glavni_grad int references drzava(id);");
         System.out.println("Gradovi su:\n" + ispisiGradove());
         glavniGrad();
     }
