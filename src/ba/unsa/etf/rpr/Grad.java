@@ -1,24 +1,51 @@
 package ba.unsa.etf.rpr;
 
 public class Grad {
+    private int id;
+    private String naziv;
+    private int brojStanovnika;
+    private Drzava drzava;
+
+    public Grad() {
+    }
+
+    public Grad(int id, String naziv, int brojStanovnika, Drzava drzava) {
+        this.id = id;
+        this.naziv = naziv;
+        this.brojStanovnika = brojStanovnika;
+        this.drzava = drzava;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public String getNaziv() {
-        return "";
+        return naziv;
     }
 
-    public void setNaziv(String marseille) {
-    }
-
-    public Grad getDrzava() {
-        return new Grad();
-    }
-
-    public void setDrzava(Drzava francuska) {
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
     }
 
     public int getBrojStanovnika() {
-        return 0;
+        return brojStanovnika;
     }
 
-    public void setBrojStanovnika(int i) {
+    public void setBrojStanovnika(int brojStanovnika) {
+        this.brojStanovnika = brojStanovnika;
+    }
+
+    public Drzava getDrzava() {
+        return drzava;
+    }
+
+    public void setDrzava(Drzava drzava) {
+        this.drzava = drzava;
+    }
+
+    @Override
+    public String toString() {
+        return naziv + " je grad drzave " + drzava.getNaziv();
     }
 }

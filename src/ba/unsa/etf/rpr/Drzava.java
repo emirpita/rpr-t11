@@ -6,4 +6,8 @@ public class Drzava {
 
     public void setGlavniGrad(Grad sarajevo) {
     }
+
+    public String getNaziv() {
+        return "";
+    }
 }
