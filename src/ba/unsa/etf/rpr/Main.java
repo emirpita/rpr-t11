@@ -49,7 +49,8 @@ public class Main {
     }
 
     public static void glavniGrad() {
-
+        String unos;
+        System.out.println("");
     }
 
     public static String ispisiGradove() {

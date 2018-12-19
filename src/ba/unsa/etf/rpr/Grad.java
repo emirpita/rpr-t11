@@ -46,6 +46,11 @@ public class Grad {
 
     @Override
     public String toString() {
-        return naziv + " je grad drzave " + drzava.getNaziv();
+        return "Grad " + this.getNaziv() + "(" + this.getDrzava() + ") - " + this.getBrojStanovnika() + "\n";
     }
+    /*
+    @Override
+    public String toString() {
+        return naziv + " je grad drzave " + drzava.getNaziv();
+    }*/
 }
