@@ -104,6 +104,7 @@ public class GeografijaDAO {
         return null;
     }
 
+    // zanemaren id
     public void dodajGrad(Grad grad) {
         String query = "insert into grad values(-1, ?, ?, ?);";
         try {
@@ -131,7 +132,16 @@ public class GeografijaDAO {
         }
     }
 
+    // mozda treba malo popraviti, koristiti opet prepared statement
     public void izmijeniGrad(Grad grad) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute("DELETE FROM grad WHERE naziv=" + grad.getNaziv() + ";");
+            this.dodajGrad(grad);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
