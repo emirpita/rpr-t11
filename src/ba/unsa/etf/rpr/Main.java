@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
@@ -50,7 +51,15 @@ public class Main {
 
     public static void glavniGrad() {
         String unos;
-        System.out.println("");
+        System.out.println("Unesite naziv grada: ");
+        Scanner scanner = new Scanner(System.in);
+        unos = scanner.nextLine();
+        if (GeografijaDAO.getInstance().nadjiDrzavu(unos) == null)
+            System.out.println("Nepostojeca drzava");
+        else {
+            Drzava d = GeografijaDAO.getInstance().nadjiDrzavu(unos);
+            System.out.println("Glavni grad drzave " + d.getNaziv() + " je " + d.getGlavniGrad().getNaziv());
+        }
     }
 
     public static String ispisiGradove() {
