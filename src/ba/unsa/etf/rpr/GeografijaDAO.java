@@ -117,8 +117,18 @@ public class GeografijaDAO {
         }
     }
 
+    // mozda treba malo poraditi na ovome
     public void dodajDrzavu(Drzava drzava) {
-
+        String query = "insert into drzava values(-1, ?, ?, ?);";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, drzava.getNaziv());
+            this.dodajGrad(drzava.getGlavniGrad());
+            preparedStatement.setNull(3, 0);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void izmijeniGrad(Grad grad) {
