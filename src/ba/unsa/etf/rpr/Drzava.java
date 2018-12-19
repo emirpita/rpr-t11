@@ -1,13 +1,34 @@
 package ba.unsa.etf.rpr;
 
 public class Drzava {
-    public void setNaziv(String bosna_i_hercegovina) {
+    private int id;
+    private String naziv;
+    private Grad glavniGrad;
+
+
+    public Drzava(int id, String naziv, Grad glavniGrad) {
+        this.id = id;
+        this.naziv = naziv;
+        this.glavniGrad = glavniGrad;
     }
 
-    public void setGlavniGrad(Grad sarajevo) {
+    public int getId() {
+        return id;
     }
 
     public String getNaziv() {
-        return "";
+        return naziv;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
+
+    public Grad getGlavniGrad() {
+        return glavniGrad;
+    }
+
+    public void setGlavniGrad(Grad glavniGrad) {
+        this.glavniGrad = glavniGrad;
     }
 }

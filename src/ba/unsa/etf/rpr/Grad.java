@@ -6,8 +6,9 @@ public class Grad {
     private int brojStanovnika;
     private Drzava drzava;
 
-    public Grad() {
-    }
+    // sam ce generisati konstruktor bez parametara
+    /*public Grad() {
+    }*/
 
     public Grad(int id, String naziv, int brojStanovnika, Drzava drzava) {
         this.id = id;
