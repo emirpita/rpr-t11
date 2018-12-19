@@ -146,5 +146,14 @@ public class GeografijaDAO {
     }
 
     public void obrisiDrzavu(String drzava) {
+        try {
+            Statement statement = connection.createStatement();
+            // prvo brisemo gradove
+            statement.execute("DELETE FROM grad WHERE drzava=(SELECT id FROM drzava WHERE naziv=" + drzava + ";");
+            // zatim brisemo drzavu
+            statement.execute("DELETE FROM drzava WHERE naziv=" + drzava + ";");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
