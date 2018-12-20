@@ -50,7 +50,7 @@ public class GeografijaDAO {
     public ArrayList<Grad> gradovi() {
         ArrayList<Grad> gradovi = new ArrayList<>();
 
-        String query = "";
+        String query = "SELECT * from grad;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -62,6 +62,7 @@ public class GeografijaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        // TODO sortirati gradove!!!
         return gradovi;
     }
 
