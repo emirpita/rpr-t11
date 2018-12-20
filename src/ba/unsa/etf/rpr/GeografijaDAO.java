@@ -5,10 +5,11 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class GeografijaDAO {
-    private static GeografijaDAO instance;
+    private static GeografijaDAO instance = null;
     private Connection connection;
     private String databaseURL = "jdbc:sqlite:baza.db";
     private Statement statement;
+
 
     private GeografijaDAO() {
         boolean init = !databaseExists();
