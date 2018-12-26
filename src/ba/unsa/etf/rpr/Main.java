@@ -25,7 +25,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        try {
+        /*try {
             statement.execute("CREATE TABLE drzava(id INT PRIMARY KEY ,naziv VARCHAR not null )");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -39,16 +39,16 @@ public class Main {
             statement.execute("ALTER TABLE drzava add column glavni_grad int references drzava(id);");
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        try {
-            statement.execute("INSERT INTO grad VALUES(1, Pariz, 2200000, 1)");
-            statement.execute("INSERT INTO grad VALUES(2, London, 8136000, 2)");
-            statement.execute("INSERT INTO grad VALUES(3, Manchester, 2200000, 2)");
-            statement.execute("INSERT INTO grad VALUES(4, Bec, 1868000, 3)");
-            statement.execute("INSERT INTO grad VALUES(5, Graz, 283869, 3)");
+        }*/
+        /*try {
+            statement.execute("INSERT INTO grad VALUES(1, 'Pariz', 2200000, 1)");
+            statement.execute("INSERT INTO grad VALUES(2, 'London', 8136000, 2)");
+            statement.execute("INSERT INTO grad VALUES(3, 'Manchester', 2200000, 2)");
+            statement.execute("INSERT INTO grad VALUES(4, 'Bec', 1868000, 3)");
+            statement.execute("INSERT INTO grad VALUES(5, 'Graz', 283869, 3)");
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
         System.out.println("Sve OK");
         /*statement.execute("DROP TABLE main.drzava;");
         statement.execute("DROP TABLE main.grad;");

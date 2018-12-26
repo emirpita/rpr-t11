@@ -48,8 +48,43 @@ public class GeografijaDAO {
 
     public ArrayList<Grad> gradovi() {
         ArrayList<Grad> gradovi = new ArrayList<>();
-
-        String query = "";
+        try {
+            statement = connection.prepareStatement("SELECT * FROM grad ORDER BY broj_stanovnika DESC");
+            ResultSet resultGradovi = statement.executeQuery();
+            while (resultGradovi.next()) {
+                Grad grad = new Grad();
+                int idGrad = resultGradovi.getInt(1);
+                grad.setId(idGrad);
+                String nazivGrad = resultGradovi.getString(2);
+                grad.setNaziv(nazivGrad);
+                int brojStanovnika = resultGradovi.getInt(3);
+                grad.setBrojStanovnika(brojStanovnika);
+                int drzavaId = resultGradovi.getInt(4);
+                grad.setDrzava(new Drzava(drzavaId, "", null));
+                gradovi.add(grad);
+            }
+            statement = connection.prepareStatement("SELECT * FROM drzava");
+            ResultSet resultDrzave = statement.executeQuery();
+            while (resultDrzave.next()) {
+                Drzava drzava = new Drzava();
+                int idDrzava = resultDrzave.getInt(1);
+                drzava.setId(idDrzava);
+                String nazivDrzave = resultDrzave.getString(2);
+                drzava.setNaziv(nazivDrzave);
+                int glavniGradId = resultDrzave.getInt(3);
+                for (var grad : gradovi) {
+                    if (grad.getDrzava().getId() == drzava.getId()) {
+                        grad.setDrzava(drzava);
+                    }
+                    if (glavniGradId == grad.getId())
+                        drzava.setGlavniGrad(grad);
+                }
+            }
+        } catch (SQLException greska) {
+            System.out.println(greska.getMessage());
+        }
+        return gradovi;
+        /*String query = "";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -61,7 +96,7 @@ public class GeografijaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return gradovi;
+        return gradovi;*/
     }
 
     public Grad glavniGrad(String drzava) {
