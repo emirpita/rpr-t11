@@ -5,7 +5,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.Scanner;
@@ -36,13 +35,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("prozor.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
         DrzavaModel drzavaModel = new DrzavaModel(baza);
         GradModel gradModel = new GradModel(baza);
         loader.setController(new Controller(baza, drzavaModel, gradModel));
         Parent root = loader.load();
         primaryStage.setTitle("Baza podataka");
-        primaryStage.getIcons().add(new Image("file:icon.png"));
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.show();
