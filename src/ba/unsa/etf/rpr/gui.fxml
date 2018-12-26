@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="475.0" prefWidth="759.0"
+            xmlns="http://javafx.com/javafx/8.0.121" fx:controller="ba.unsa.etf.rpr.Controller">
+    <center>
+        <TableView fx:id="tabelaDrzava" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="idDrzavaKolona" prefWidth="137.0" text="Id"/>
+                <TableColumn fx:id="nazivDrzaveKolona" minWidth="0.0" prefWidth="322.0" text="Naziv"/>
+                <TableColumn fx:id="glavniGradKolona" prefWidth="289.0" text="Glavni grad id"/>
+            </columns>
+        </TableView>
+    </center>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+    </padding>
+    <top>
+        <GridPane hgap="5.0" prefHeight="51.0" prefWidth="590.0" vgap="10.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="77.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="86.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="222.0" minWidth="10.0" prefWidth="111.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="167.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="166.0" minWidth="10.0" prefWidth="117.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="149.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Button fx:id="changeDrzavaBttn" mnemonicParsing="false" onAction="#changeDrzavaOnClick"
+                        text="Izmjeni drzavu" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER"/>
+                <Button fx:id="addDrzavuBttn" mnemonicParsing="false" onAction="#addDrzavaOnClick" text="Dodaj drzavu"
+                        GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                <Button fx:id="changeGradBttn" mnemonicParsing="false" onAction="#changeGradOnClick" text="Izmjeni grad"
+                        GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                <Button fx:id="addGradBttn" mnemonicParsing="false" onAction="#addGradOnClick" text="Dodaj grad"
+                        GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                <TextField fx:id="textfield1" prefWidth="130.0" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                           GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+                <TextField fx:id="textfield2" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                           GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+                <TextField fx:id="textfield3" GridPane.columnIndex="4" GridPane.halignment="CENTER"
+                           GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+                <TextField fx:id="textfield4" GridPane.columnIndex="5" GridPane.halignment="CENTER"
+                           GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+                <Button fx:id="clearBttn" mnemonicParsing="false" onAction="#clearBttnOnClick" text="CLEAR"
+                        GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                <Button fx:id="obrisiGradButton" mnemonicParsing="false" onAction="#deleteGradOnClick"
+                        text="Obrisi grad" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                        GridPane.valignment="CENTER"/>
+                <Button fx:id="obrisiDrzavuButton" mnemonicParsing="false" onAction="#deleteDrzavaOnClick"
+                        text="Obrisi drzavu" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                        GridPane.valignment="CENTER"/>
+                <Button fx:id="refreshBttn" mnemonicParsing="false" text="REFRESH" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER"/>
+            </children>
+            <padding>
+                <Insets bottom="5.0"/>
+            </padding>
+        </GridPane>
+    </top>
+    <bottom>
+        <TableView fx:id="tabelaGradova" prefHeight="240.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="idGradKolona" prefWidth="95.0" text="Id"/>
+                <TableColumn fx:id="nazivGradKolona" prefWidth="237.0" text="Naziv"/>
+                <TableColumn fx:id="brojStanovnikaKolona" prefWidth="238.0" text="Broj stanovnika"/>
+                <TableColumn fx:id="drzavaIdKolona" prefWidth="178.0" text="Drzava id"/>
+            </columns>
+        </TableView>
+    </bottom>
+</BorderPane>

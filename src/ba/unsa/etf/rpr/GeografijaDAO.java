@@ -225,4 +225,43 @@ public class GeografijaDAO {
         }
         return drzave;
     }
+
+    public void izmijeniDrzava(Drzava drzava) {
+        try {
+            statement = connection.prepareStatement("UPDATE drzava SET naziv = ?, glavni_grad = ? WHERE id = ?");
+            statement.setString(1, drzava.getNaziv());
+            statement.setInt(2, drzava.getGlavniGrad().getId());
+            statement.setInt(3, drzava.getId());
+
+
+            int indeksReda = statement.executeUpdate();
+            System.out.println("Uspjesno izmjenjen " + indeksReda + " red");
+        } catch (SQLException greska) {
+            System.out.println(greska.getMessage());
+        }
+    }
+
+    public void obrisiGrad(String naziv) {
+        try {
+            statement = connection.prepareStatement("SELECT d.id FROM grad g, drzava d WHERE d.glavni_grad = g.id AND g.naziv = ?");
+            statement.setString(1, naziv);
+            ResultSet result = statement.executeQuery();
+            int brojac = 0;
+            while (result.next()) {
+                int idDrzava = result.getInt(1);
+                PreparedStatement podUpit = connection.prepareStatement("DELETE FROM drzava WHERE id = ?");
+                podUpit.setInt(1, idDrzava);
+                podUpit.executeUpdate();
+                brojac++;
+            }
+            if (brojac == 0)
+                return;
+            statement = connection.prepareStatement("DELETE FROM grad WHERE naziv = ?");
+            statement.setString(1, naziv);
+            statement.executeUpdate();
+        } catch (SQLException greska) {
+            System.out.println(greska.getMessage());
+        }
+    }
 }
+

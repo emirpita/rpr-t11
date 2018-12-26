@@ -52,6 +52,12 @@ public class Grad {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String gradUString() {
+        if (getDrzava() == null)
+            return getNaziv() + "()" + " - " + getBrojStanovnika();
+        return getNaziv() + " (" + getDrzava().getNaziv() + ")" + " - " + getBrojStanovnika();
+    }
     /*
     @Override
     public String toString() {
