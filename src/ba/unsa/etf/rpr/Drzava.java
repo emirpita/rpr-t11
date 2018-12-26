@@ -39,4 +39,8 @@ public class Drzava {
     public String toString() {
         return String.valueOf(getId());
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

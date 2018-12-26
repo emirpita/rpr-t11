@@ -8,14 +8,14 @@ public class GeografijaDAO {
     private static GeografijaDAO instance;
     private Connection connection;
     private String databaseURL = "jdbc:sqlite:baza.db";
-    private Statement statement;
+    private PreparedStatement statement;
 
     private GeografijaDAO() {
         boolean init = !databaseExists();
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(databaseURL);
-            statement = connection.createStatement();
+            //statement = connection.prepareStatement();
             if (init) {
                 initializeData();
             }
@@ -155,5 +155,39 @@ public class GeografijaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<Drzava> drzave() {
+        ArrayList<Drzava> drzave = new ArrayList<>();
+        try {
+            statement = connection.prepareStatement("SELECT d.id, d.naziv, d.glavni_grad FROM drzava d, grad g WHERE d.glavni_grad = g.id ORDER BY broj_stanovnika DESC");
+            ResultSet resultDrzave = statement.executeQuery();
+            while (resultDrzave.next()) {
+                Drzava drzava = new Drzava();
+                int idDrzava = resultDrzave.getInt(1);
+                drzava.setId(idDrzava);
+                String nazivDrzave = resultDrzave.getString(2);
+                drzava.setNaziv(nazivDrzave);
+                int gradId = resultDrzave.getInt(3);
+                PreparedStatement podUpit = connection.prepareStatement("SELECT * FROM grad WHERE id = ?");
+                podUpit.setInt(1, gradId);
+                ResultSet resultGradovi = podUpit.executeQuery();
+                Grad grad = new Grad();
+                while (resultGradovi.next()) {
+                    int idGrad = resultGradovi.getInt(1);
+                    grad.setId(idGrad);
+                    String nazivGrad = resultGradovi.getString(2);
+                    grad.setNaziv(nazivGrad);
+                    int brojStanovika = resultGradovi.getInt(3);
+                    grad.setBrojStanovnika(brojStanovika);
+                    grad.setDrzava(drzava);
+                }
+                drzava.setGlavniGrad(grad);
+                drzave.add(drzava);
+            }
+        } catch (SQLException greska) {
+            System.out.println(greska.getMessage());
+        }
+        return drzave;
     }
 }
