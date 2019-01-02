@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="rpr-t9" target="1.5" />
+      <module name="rpr-t9" target="10" />
     </bytecodeTargetLevel>
   </component>
 </project>

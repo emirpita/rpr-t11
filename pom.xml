@@ -8,5 +8,8 @@
     <artifactId>rpr-t9</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    
+    <properties>
+        <maven.compiler.source>10.0.2</maven.compiler.source>
+        <maven.compiler.target>10.0.2</maven.compiler.target>
+    </properties>
 </project>
