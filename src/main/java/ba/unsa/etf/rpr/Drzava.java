@@ -1,4 +1,5 @@
-package ba.unsa.etf.rpr;
+package main.java.ba.unsa.etf.rpr;
+
 
 public class Drzava {
     private int id;

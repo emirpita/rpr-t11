@@ -1,4 +1,4 @@
-package ba.unsa.etf.rpr;
+/*package main.java.ba.unsa.etf.rpr;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
@@ -81,4 +81,4 @@ public class GradoviReport extends JFrame {
         }
         output.close();
     }
-}
+}*/
