@@ -1,4 +1,4 @@
-package ba.unsa.etf.rpr;
+package main.java.ba.unsa.etf.rpr;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
