@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="rpr-t9:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/rpr_t9_jar</output-path>
+    <root id="archive" name="rpr-t9.jar">
+      <element id="module-output" name="rpr-t9" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.11/mysql-connector-java-8.0.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/2.6.0/protobuf-java-2.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/xerial/sqlite-jdbc/3.21.0/sqlite-jdbc-3.21.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

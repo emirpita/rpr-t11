@@ -1,4 +1,4 @@
-package main.java.ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr;
 
 public class Grad {
     private int id;
