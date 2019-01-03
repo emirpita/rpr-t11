@@ -35,7 +35,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui.fxml"));
         DrzavaModel drzavaModel = new DrzavaModel(baza);
         GradModel gradModel = new GradModel(baza);
         loader.setController(new Controller(baza, drzavaModel, gradModel));
