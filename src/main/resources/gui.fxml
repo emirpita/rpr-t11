@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="475.0" prefWidth="759.0"
-            xmlns="http://javafx.com/javafx/8.0.121" fx:controller="ba.unsa.etf.rpr.Controller">
+            xmlns="http://javafx.com/javafx/8.0.121">
     <center>
         <TableView fx:id="tabelaDrzava" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <columns>

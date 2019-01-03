@@ -8,7 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class Controller {
     private static GeografijaDAO baza = null;
     public Button changeDrzavaBttn;
-    public Button addDrzavaBttn;
+    public Button addDrzavuBttn;
     public Button changeGradBttn;
     public Button addGradBttn;
     public TableView<Drzava> tabelaDrzava;
@@ -18,8 +18,8 @@ public class Controller {
     public TextField textfield3;
     public TextField textfield4;
     public Button clearBttn;
-    public Button deleteDrzavaBttn;
-    public Button deleteGradBttn;
+    public Button obrisiDrzavuButton;
+    public Button obrisiGradButton;
     public Button refreshBttn;
     public TableColumn<Drzava, Integer> idDrzavaKolona;
     public TableColumn<Drzava, String> nazivDrzaveKolona;
@@ -47,7 +47,7 @@ public class Controller {
         tabelaDrzava.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 tabelaGradova.getSelectionModel().clearSelection();
-                addDrzavaBttn.setDisable(true);
+                addDrzavuBttn.setDisable(true);
                 addGradBttn.setDisable(true);
                 changeGradBttn.setDisable(true);
                 changeDrzavaBttn.setDisable(false);
@@ -72,7 +72,7 @@ public class Controller {
         tabelaGradova.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 tabelaDrzava.getSelectionModel().clearSelection();
-                addDrzavaBttn.setDisable(true);
+                addDrzavuBttn.setDisable(true);
                 addGradBttn.setDisable(true);
                 changeDrzavaBttn.setDisable(true);
                 changeGradBttn.setDisable(false);
@@ -95,14 +95,14 @@ public class Controller {
             return row;
         });
 
-        idDrzavaKolona.setCellValueFactory(new PropertyValueFactory<>("idDrzava"));
-        nazivDrzaveKolona.setCellValueFactory(new PropertyValueFactory<>("nazivDrzave"));
-        glavniGradKolona.setCellValueFactory(new PropertyValueFactory<>("glavniGrad"));
+        idDrzavaKolona.setCellValueFactory(new PropertyValueFactory<>("idDrzavaKolona"));
+        nazivDrzaveKolona.setCellValueFactory(new PropertyValueFactory<>("nazivDrzaveKolona"));
+        glavniGradKolona.setCellValueFactory(new PropertyValueFactory<>("glavniGradKolona"));
 
-        idGradKolona.setCellValueFactory(new PropertyValueFactory<>("idGrad"));
-        nazivGradKolona.setCellValueFactory(new PropertyValueFactory<>("nazivGrad"));
-        brojStanovnikaKolona.setCellValueFactory(new PropertyValueFactory<>("brojStanovnika"));
-        drzavaIdKolona.setCellValueFactory(new PropertyValueFactory<>("drzava"));
+        idGradKolona.setCellValueFactory(new PropertyValueFactory<>("idGradKolona"));
+        nazivGradKolona.setCellValueFactory(new PropertyValueFactory<>("nazivGradKolona"));
+        brojStanovnikaKolona.setCellValueFactory(new PropertyValueFactory<>("brojStanovnikaKolona"));
+        drzavaIdKolona.setCellValueFactory(new PropertyValueFactory<>("drzavaIdKolona"));
     }
 
     private void showAlert(String title, String headerText) {
@@ -164,7 +164,7 @@ public class Controller {
         textfield4.setDisable(false);
         changeGradBttn.setDisable(true);
         changeDrzavaBttn.setDisable(true);
-        addDrzavaBttn.setDisable(false);
+        addDrzavuBttn.setDisable(false);
         addGradBttn.setDisable(false);
         tabelaDrzava.getSelectionModel().clearSelection();
         tabelaGradova.getSelectionModel().clearSelection();
